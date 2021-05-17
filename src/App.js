@@ -1,15 +1,18 @@
 
 import Todos from "./components/Todos"
 import ColorModeContainer from "./components/ColorModeContainer"
-
+import { DarkModeContextProvider } from "../src/context/DarkModeContext"
 function App() {
+
   return (
-    <ColorModeContainer>
-      <div className="container my-4">
-        <h1 className="text-center">ToDos App</h1>
-        <Todos />
-      </div>
-    </ColorModeContainer>
+    <DarkModeContextProvider>
+      <ColorModeContainer>
+        <div className="container my-4">
+          <h1 className="text-center">ToDos App</h1>
+          <Todos />
+        </div>
+      </ColorModeContainer>
+    </DarkModeContextProvider>
   )
 }
 

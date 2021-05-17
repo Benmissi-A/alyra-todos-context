@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import ColorModeSwitcher from "./ColorModeSwitcher"
+import {useDarkmodeContext} from "../context/DarkModeContext"
 
 const ColorModeContainer = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(
-    () => JSON.parse(localStorage.getItem("my-dark-mode")) || false
-  )
+const {darkMode,setDarkMode} = useDarkmodeContext()
 
   useEffect(() => {
     localStorage.setItem("my-dark-mode", JSON.stringify(darkMode))
