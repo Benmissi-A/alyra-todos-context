@@ -1,11 +1,9 @@
-
 import React, { useEffect, useReducer } from "react"
 import TodosList from "./TodosList"
 import AddTodoForm from "./AddTodoForm"
+
 import { todosReducer } from '../reducers/TodosReducer'
 import { TodosDispatchContext } from '../context/TodosDispatchContext'
-
-
 
 const initialTodos = [
   {
@@ -46,12 +44,10 @@ const Todos = () => {
   return (
     <main>
       <h2 className="text-center">Ma liste de tâches ({state.length})</h2>
-      <TodosContext.Provider value={dispatch}>
+      <TodosDispatchContext.Provider value={dispatch}>
         <TodosList todos={state} />
-        
-          <AddTodoForm />
-        
-      </TodosContext.Provider>
+        <AddTodoForm />
+      </TodosDispatchContext.Provider>
     </main>
   )
 }

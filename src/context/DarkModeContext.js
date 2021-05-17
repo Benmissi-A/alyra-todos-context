@@ -4,9 +4,9 @@ export const DarkModeContext = createContext()
 
 export const DarkModeContextProvider = ({children}) => {
   return(
-    <DarkModeDispatchContext.Provider value={{darkMode}}>
+    <DarkModeContext.Provider value={{darkMode}}>
           {children}
-    </DarkModeDispatchContext.Provider>
+    </DarkModeContext.Provider>
     ) 
 }
 export const useDarkmodeContext = () => {
