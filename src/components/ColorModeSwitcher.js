@@ -1,9 +1,18 @@
 import React from "react"
+import { useEffect } from "react"
+import {useDarkmodeContext} from "../context/DarkModeContext"
 
-const ColorModeSwitcher = ({ darkMode, setDarkMode }) => {
+const ColorModeSwitcher = () => {
+  const {darkMode,setDarkMode} = useDarkmodeContext()
   const handleModeChange = () => {
     setDarkMode((mode) => !mode)
   }
+  console.log(darkMode)
+
+  useEffect(() => {
+    localStorage.setItem("my-dark-mode", JSON.stringify(darkMode))
+  }, [darkMode])
+
   return (
     <div className="form-check form-switch">
       <input

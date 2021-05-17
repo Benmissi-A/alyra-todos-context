@@ -3,7 +3,8 @@ import ColorModeSwitcher from "./ColorModeSwitcher"
 import {useDarkmodeContext} from "../context/DarkModeContext"
 
 const ColorModeContainer = ({ children }) => {
-const {darkMode,setDarkMode} = useDarkmodeContext()
+const {darkMode,} = useDarkmodeContext()
+
 
   useEffect(() => {
     localStorage.setItem("my-dark-mode", JSON.stringify(darkMode))
@@ -13,7 +14,7 @@ const {darkMode,setDarkMode} = useDarkmodeContext()
 
   return (
     <div className={`${modeClass} min-vh-100`}>
-      <ColorModeSwitcher darkMode={darkMode} setDarkMode={setDarkMode} />
+      <ColorModeSwitcher />
       {children}
     </div>
   )
