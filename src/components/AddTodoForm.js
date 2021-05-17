@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid"
 
 const AddTodoForm = () => {
   const disptach = useTodosDispatch()
+
   const addTodo = (text) => {
     const newTodo = {
       text,
