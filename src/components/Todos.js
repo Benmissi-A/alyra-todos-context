@@ -16,11 +16,10 @@ const Todos = () => {
   const [state, dispatch] = useReducer(todosReducer, initialState)
   const {todos,loading, error} = state
   const isMouted = useIsMounted()
-  console.log(isMouted)
 
 useEffect(()=>{
   dispatch({type :"FETCH_INIT"})
-  fetch(`${process.env.RACT_APP_API_URL}/todos`)
+  fetch(`${process.env.REACT_APP_API_URL}/todos`)
   .then((responce)=>{
     if(!responce.ok){
       throw new Error(`Something wrong ERROR:${responce.statusText}`)
