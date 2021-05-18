@@ -6,6 +6,7 @@ export const todosReducer = (state, action) => {
       return {
         ...state,
         todos: [...state.todos, action.payload],
+        loading: false
       }
     case "DELETE":
       return {
@@ -24,11 +25,12 @@ export const todosReducer = (state, action) => {
           }
           return el
         }),
+        loading: false
       }
     case "FETCH_INIT": // 🆕
       return {
         ...state,
-        loading: true,
+        loading: true
       }
     case "FETCH_FAILURE": // 🆕
       return {

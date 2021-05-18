@@ -1,23 +1,46 @@
 
+
+//import { v4 as uuidv4 } from "uuid"
 import { useTodosDispatch } from '../context/TodosDispatchContext'
-import { v4 as uuidv4 } from "uuid"
+import {useIsMounted} from '../hooks/uselesMounted'
+
 
 const AddTodoForm = () => {
-  const disptach = useTodosDispatch()
+  const dispatch = useTodosDispatch()
+  const isMounted = useIsMounted()
 
-  const addTodo = (text) => {
-    const newTodo = {
-      text,
-      isCompleted: false,
-      id: uuidv4()
-    }
-    //setTodos([...todos, newTodo])
-    disptach({ type: 'ADD', payload: newTodo })
-  }
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = event => {
     event.preventDefault()
     const newTodoText = event.target.elements.todo.value
-    addTodo(newTodoText)
+    dispatch({type: "FETCH_INIT"})
+    fetch(`${process.env.REACT_APP_API_URL}/todos`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: newTodoText,
+        isCompleted: false,
+      }),
+    })
+      .then(response => {
+        
+        if (!response.ok) {
+          throw new Error(`Something went wrong: ${response.textStatus}`)
+        }
+        return response.json()
+      })
+      .then(result => {
+        console.log(result)
+        if (isMounted.current) {
+          dispatch({ type: "ADD", payload:result })
+        }
+      })
+      .catch(error => {
+        if (isMounted.current) {
+          dispatch({ type: "FETCH_FAILURE", payload: error.message })
+        }
+      })
     event.target.reset()
   }
   return (
