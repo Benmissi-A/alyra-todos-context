@@ -31,9 +31,10 @@ const AddTodoForm = () => {
         return response.json()
       })
       .then(result => {
+        console.log('result')
         console.log(result)
         if (isMounted.current) {
-          dispatch({ type: "ADD", payload:result })
+          dispatch({ type: "ADD", payload: result })
         }
       })
       .catch(error => {
