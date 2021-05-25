@@ -3,7 +3,7 @@ import ColorModeSwitcher from "./ColorModeSwitcher"
 import {useDarkmodeContext} from "../context/DarkModeContext"
 
 const ColorModeContainer = ({ children }) => {
-const {darkMode,} = useDarkmodeContext()
+const {darkMode} = useDarkmodeContext()
 
 
   useEffect(() => {

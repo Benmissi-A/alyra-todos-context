@@ -9,9 +9,9 @@ const ColorModeSwitcher = () => {
   }
   console.log(darkMode)
 
-  useEffect(() => {
-    localStorage.setItem("my-dark-mode", JSON.stringify(darkMode))
-  }, [darkMode])
+  // useEffect(() => {
+  //   localStorage.setItem("my-dark-mode", JSON.stringify(darkMode))
+  // }, [darkMode])
 
   return (
     <div className="form-check form-switch">

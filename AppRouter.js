@@ -1,0 +1,6 @@
+
+
+
+const AppRouter = () => {
+}
+return AppRouter

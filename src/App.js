@@ -1,5 +1,7 @@
 
 import Todos from "./components/Todos"
+import Home from "./pages/Home"
+import Loin from "./pages/Login"
 import ColorModeContainer from "./components/ColorModeContainer"
 import { DarkModeContextProvider } from "../src/context/DarkModeContext"
 function App() {
